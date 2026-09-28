@@ -106,26 +106,32 @@ const COURSES: Course[] = [
   },
 ];
 
-const CATEGORIES = [
-  "Featured",
-  "Music",
-  "Drawing & Painting",
-  "Marketing",
-  "Animation",
-  "Social Media",
-  "UI/UX Design",
-  "Creative Marketing",
-  "Digital Illustration",
-  "Film & Video",
-  "Crafts",
-  "Freelance & Entrepreneurship",
-  "Graphic Design",
-  "Photography",
-  "Productivity",
-  "Web Development",
-  "Data Science",
-  "Cooking",
-  "+ More",
+const CATEGORY_ROWS = [
+  [
+    "Featured",
+    "Music",
+    "Drawing & Painting",
+    "Marketing",
+    "Animation",
+    "Social Media",
+    "UI/UX Design",
+    "Creative Marketing",
+  ],
+  [
+    "Digital Illustration",
+    "Film & Video",
+    "Crafts",
+    "Freelance & Entrepreneurship",
+    "Graphic Design",
+    "Photography",
+  ],
+  [
+    "Productivity",
+    "Web Development",
+    "Data Science",
+    "Cooking",
+    "+ More",
+  ],
 ];
 
 export default function CoursesSection() {
@@ -145,27 +151,34 @@ export default function CoursesSection() {
           </p>
         </div>
 
-        {/* Category Pills */}
-        <div className="mt-10 md:mt-12 flex flex-wrap justify-center items-center gap-2.5 max-w-5xl mx-auto">
-          {CATEGORIES.map((cat) => {
-            const isActive = activeCategory === cat;
-            return (
-              <button
-                key={cat}
-                onClick={() => setActiveCategory(cat)}
-                className={`px-4 sm:px-5 py-2 sm:py-2.5 rounded-full text-xs sm:text-[13px] font-medium transition-all duration-200 cursor-pointer ${
-                  isActive
-                    ? "bg-[#CBFC01] text-gray-950 font-bold shadow-sm scale-105"
-                    : "bg-[#F5F5F6] hover:bg-[#EBEBEB] text-gray-700 border border-transparent"
-                }`}
-              >
-                {cat}
-              </button>
-            );
-          })}
+        {/* Category Pills (Structured in 3 rows exactly matching Figma) */}
+        <div className="mt-10 md:mt-12 flex flex-col items-center gap-3 max-w-5xl mx-auto">
+          {CATEGORY_ROWS.map((row, rowIdx) => (
+            <div
+              key={rowIdx}
+              className="flex flex-wrap justify-center items-center gap-2.5 sm:gap-3"
+            >
+              {row.map((cat) => {
+                const isActive = activeCategory === cat;
+                return (
+                  <button
+                    key={cat}
+                    onClick={() => setActiveCategory(cat)}
+                    className={`px-4 sm:px-5 py-2 sm:py-2.5 rounded-full text-xs sm:text-[13px] font-medium transition-all duration-200 cursor-pointer ${
+                      isActive
+                        ? "bg-[#CBFC01] text-gray-950 font-bold shadow-sm"
+                        : "bg-[#F5F5F6] hover:bg-[#EBEBEB] text-gray-700 border border-transparent"
+                    }`}
+                  >
+                    {cat}
+                  </button>
+                );
+              })}
+            </div>
+          ))}
         </div>
 
-        {/* Courses Grid */}
+        {/* Courses Grid (3 cols x 2 rows) */}
         <div className="mt-14 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {COURSES.map((course) => (
             <div
@@ -180,13 +193,17 @@ export default function CoursesSection() {
                   fill
                   className="object-cover group-hover:scale-105 transition-transform duration-500"
                 />
-                {/* Floating pill badge on thumbnail */}
-                <div className="absolute bottom-3 left-3 right-3 bg-white/70 backdrop-blur-md rounded-full py-1.5 px-3 flex items-center justify-between text-[11px] font-medium text-gray-800 shadow-sm">
-                  <span>{course.lessons}</span>
-                  <span className="w-1 h-1 bg-gray-400 rounded-full" />
-                  <span>{course.duration}</span>
-                  <span className="w-1 h-1 bg-gray-400 rounded-full" />
-                  <span>{course.comments}</span>
+                {/* 3 Separate Translucent Pills exactly matching Figma */}
+                <div className="absolute bottom-3 left-3 right-3 flex items-center justify-between gap-1.5 pointer-events-none">
+                  <span className="bg-white/80 backdrop-blur-md rounded-full px-2.5 py-1 text-[11px] font-medium text-gray-800 shadow-sm">
+                    {course.lessons}
+                  </span>
+                  <span className="bg-white/80 backdrop-blur-md rounded-full px-2.5 py-1 text-[11px] font-medium text-gray-800 shadow-sm">
+                    {course.duration}
+                  </span>
+                  <span className="bg-white/80 backdrop-blur-md rounded-full px-2.5 py-1 text-[11px] font-medium text-gray-800 shadow-sm">
+                    {course.comments}
+                  </span>
                 </div>
               </div>
 
@@ -202,19 +219,19 @@ export default function CoursesSection() {
                       <Star className="w-4 h-4 fill-[#CBFC01] text-[#CBFC01]" />
                     </div>
                   </div>
-                  <p className="text-xs text-[#003BE2] font-medium mt-1">
+                  <p className="text-xs text-[#003BE2] font-semibold mt-1">
                     {course.author}
                   </p>
                 </div>
 
-                {/* Level and Avatars */}
+                {/* Level and Avatars with Lime 26+ badge */}
                 <div className="mt-4 pt-4 border-t border-gray-100 flex items-center justify-between">
                   <div className="flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-[#F5F5F6] text-gray-700 text-xs font-medium">
                     <BarChart2 className="w-3.5 h-3.5 text-gray-500" />
                     <span>{course.level}</span>
                   </div>
 
-                  {/* Overlapping student avatars */}
+                  {/* Overlapping student avatars + lime 26+ badge */}
                   <div className="flex items-center -space-x-1.5">
                     <Image
                       src="/assets/b44979e1c98ecb3ec92ac86805fe55581fbeaa60.png"
@@ -237,7 +254,7 @@ export default function CoursesSection() {
                       height={24}
                       className="w-6 h-6 rounded-full border-2 border-white object-cover"
                     />
-                    <div className="w-6 h-6 rounded-full bg-black text-white text-[9px] font-bold flex items-center justify-center border-2 border-white">
+                    <div className="w-6 h-6 rounded-full bg-[#CBFC01] text-gray-950 text-[9px] font-extrabold flex items-center justify-center border-2 border-white">
                       26+
                     </div>
                   </div>

@@ -24,7 +24,7 @@ export default function ByteSpaceFooter() {
   };
 
   return (
-    <footer className="w-full bg-white border-t border-[#E5E6E8] pt-16 pb-12">
+    <footer className="w-full bg-white border-t-2 border-[#003BE2] pt-16 pb-12">
       <div className="max-w-[1360px] mx-auto px-6 lg:px-12">
         {/* Top Grid: Newsletter + Links */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16">

@@ -5,8 +5,12 @@ import Image from "next/image";
 
 export default function ProfessionalGrowthSection() {
   return (
-    <section className="w-full py-16 md:py-24 bg-[#FAFAFA] border-t border-[#E5E6E8] overflow-hidden">
-      <div className="max-w-[1360px] mx-auto px-6 lg:px-12">
+    <section className="relative w-full py-16 md:py-24 bg-[#FAFAFA] border-t border-[#E5E6E8] overflow-hidden">
+      {/* Background Soft Glows */}
+      <div className="absolute top-1/2 left-0 -translate-y-1/2 w-[500px] h-[500px] bg-[#CBFC01]/10 rounded-full blur-[140px] pointer-events-none -z-0" />
+      <div className="absolute top-1/2 right-0 -translate-y-1/2 w-[500px] h-[500px] bg-[#003BE2]/5 rounded-full blur-[140px] pointer-events-none -z-0" />
+
+      <div className="relative z-10 max-w-[1360px] mx-auto px-6 lg:px-12">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
           {/* Left Content */}
           <div className="flex flex-col justify-center">

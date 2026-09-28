@@ -37,8 +37,9 @@ const TESTIMONIALS: Testimonial[] = [
 export default function TestimonialsSection() {
   return (
     <section className="relative w-full py-20 md:py-28 bg-[#FAFAFA] overflow-hidden">
-      {/* Soft lime glow gradient in background */}
-      <div className="absolute top-1/2 right-0 -translate-y-1/2 w-[500px] h-[500px] bg-[#CBFC01]/10 rounded-full blur-3xl pointer-events-none -z-0" />
+      {/* Soft gradient background glow matching Figma */}
+      <div className="absolute top-1/2 left-1/4 -translate-y-1/2 w-[600px] h-[600px] bg-[#CBFC01]/10 rounded-full blur-[140px] pointer-events-none -z-0" />
+      <div className="absolute top-1/2 right-1/4 -translate-y-1/2 w-[500px] h-[500px] bg-[#003BE2]/5 rounded-full blur-[140px] pointer-events-none -z-0" />
 
       <div className="relative z-10 max-w-[1360px] mx-auto px-6 lg:px-12">
         {/* Header Grid */}
@@ -60,9 +61,9 @@ export default function TestimonialsSection() {
               className="bg-white rounded-3xl p-8 border border-[#E5E6E8] hover:border-gray-300 transition-all duration-300 hover:shadow-xl flex flex-col justify-between"
             >
               <div>
-                {/* Author Info with Avatar */}
+                {/* Author Info with Circular Avatar matching Figma */}
                 <div className="flex items-center gap-4 mb-6">
-                  <div className="w-14 h-14 rounded-2xl overflow-hidden bg-gray-100 shrink-0 border border-gray-200 shadow-sm">
+                  <div className="w-14 h-14 rounded-full overflow-hidden bg-gray-100 shrink-0 border-2 border-white shadow-sm">
                     <Image
                       src={t.avatar}
                       alt={t.name}

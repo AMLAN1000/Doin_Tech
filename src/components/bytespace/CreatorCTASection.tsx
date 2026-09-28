@@ -9,56 +9,22 @@ export default function CreatorCTASection() {
     <section className="relative w-full bg-[#003BE2] py-24 md:py-32 overflow-hidden text-white">
       {/* Background Grid Pattern */}
       <div
-        className="absolute inset-0 opacity-[0.06] pointer-events-none bg-repeat"
+        className="absolute inset-0 opacity-[0.08] pointer-events-none bg-repeat"
         style={{
           backgroundImage: `linear-gradient(to right, #ffffff 1px, transparent 1px), linear-gradient(to bottom, #ffffff 1px, transparent 1px)`,
           backgroundSize: "60px 60px",
         }}
       />
 
-      {/* Floating 3D Ornaments */}
-      <div className="absolute inset-0 pointer-events-none overflow-hidden select-none">
-        {/* Left top ribbon */}
-        <div className="absolute -left-10 top-8 md:left-8 md:top-12 w-36 md:w-48 h-36 md:h-48 opacity-90">
+      {/* Floating 3D Ornaments Overlay matching Figma */}
+      <div className="absolute inset-0 pointer-events-none select-none z-0 overflow-hidden flex items-center justify-center">
+        <div className="relative w-full max-w-[1440px] h-full min-h-[500px]">
           <Image
-            src="/assets/8670b841eac7883ecb790f84eb349c6c01db588b.png"
-            alt="3D Ornament"
-            width={180}
-            height={180}
-            className="object-contain"
-          />
-        </div>
-
-        {/* Right top cone */}
-        <div className="absolute right-2 top-8 md:right-12 md:top-10 w-28 md:w-40 h-28 md:h-40 opacity-90">
-          <Image
-            src="/assets/92fc70a39c36138c0e55699b18b3e88bd1f86a59.png"
-            alt="3D Cone"
-            width={160}
-            height={160}
-            className="object-contain"
-          />
-        </div>
-
-        {/* Left bottom torus */}
-        <div className="absolute -left-8 bottom-6 md:left-12 md:bottom-12 w-32 md:w-44 h-32 md:h-44 opacity-95">
-          <Image
-            src="/assets/f9c0e0fd05db48405aa72287b20d04b9a01feb51.png"
-            alt="3D Torus"
-            width={180}
-            height={180}
-            className="object-contain"
-          />
-        </div>
-
-        {/* Right bottom ribbon */}
-        <div className="absolute -right-6 bottom-8 md:right-14 md:bottom-12 w-32 md:w-44 h-32 md:h-44 opacity-90">
-          <Image
-            src="/assets/5b3686bc5eadc510e3e04da588f9299d8bd3194c.png"
-            alt="3D Ribbon"
-            width={180}
-            height={180}
-            className="object-contain"
+            src="/renders/cta_decor.png"
+            alt="3D Ornaments"
+            fill
+            className="object-contain object-center opacity-95"
+            priority
           />
         </div>
       </div>
@@ -76,7 +42,7 @@ export default function CreatorCTASection() {
         <div className="mt-10">
           <Link
             href="/register"
-            className="inline-flex items-center justify-center px-9 py-4 rounded-full bg-[#CBFC01] hover:bg-[#b5e200] text-black font-heading font-bold text-base transition-all duration-200 shadow-lg hover:shadow-xl hover:scale-105"
+            className="inline-flex items-center justify-center px-9 py-4 rounded-full bg-[#CBFC01] hover:bg-[#b5e200] text-black font-heading font-bold text-base transition-all duration-200 shadow-lg hover:shadow-xl hover:scale-105 cursor-pointer"
           >
             Join as Creator
           </Link>
