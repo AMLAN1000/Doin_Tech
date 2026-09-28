@@ -5,8 +5,8 @@ import Image from "next/image";
 import { FieldValues, useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
-import leftimage from "../../../../public/images/company-logo.png";
-import logo from "../../../../public/images/logonav.png";
+const leftimage = "/renders/growth_visual.png";
+const logo = "/svgs/header_logo.svg";
 import {
   useForgotPasswordMutation,
   useResetEmailVerifyMutation,

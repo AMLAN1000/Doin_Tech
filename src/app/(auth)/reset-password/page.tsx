@@ -1,9 +1,9 @@
 'use client'
 import Link from "next/link";
 import {z} from 'zod'
-import leftimage from '../../../../public/images/company-logo.png'
+const leftimage = '/renders/growth_visual.png';
 import Image from "next/image";
-import logo from '../../../../public/images/logonav.png'
+const logo = '/svgs/header_logo.svg';
 import { FieldValues, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { p } from "framer-motion/client";

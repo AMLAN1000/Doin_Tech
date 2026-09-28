@@ -45,7 +45,24 @@
   --radius-2xl: calc(var(--radius) + 8px);
   --radius-3xl: calc(var(--radius) + 12px);
   --radius-4xl: calc(var(--radius) + 16px);
-  --color-brand-green:#A3E635;
+  --color-brand-green: #CBFC01;
+  --color-brand-blue: #003BE2;
+  --color-brand-dark: #242528;
+  --color-brand-light: #F5F5F6;
+  --color-brand-muted: #82868E;
+  --color-brand-border: #E5E6E8;
+}
+
+@layer utilities {
+  .font-heading {
+    font-family: 'Clash Display', 'Poppins', sans-serif;
+  }
+  .font-body {
+    font-family: 'Satoshi', sans-serif;
+  }
+  .font-poppins {
+    font-family: 'Poppins', sans-serif;
+  }
 }
 
 :root {
