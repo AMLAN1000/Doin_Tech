@@ -26,21 +26,66 @@ export default function HeroSection() {
         }}
       />
 
-      {/* Floating 3D Ornaments Overlay from Figma */}
-      <div className="absolute inset-0 pointer-events-none select-none z-0 overflow-hidden flex items-center justify-center">
-        <div className="relative w-full max-w-[1440px] h-full min-h-[700px]">
+      {/* Floating 3D Ornaments matching Figma Screenshot 1 */}
+      <div className="absolute inset-0 pointer-events-none select-none z-0 overflow-hidden">
+        {/* Top Left: Lime Green Spiral Spring */}
+        <div className="absolute -left-6 top-24 sm:left-4 sm:top-28 md:left-8 md:top-32 w-32 sm:w-44 md:w-52 h-32 sm:h-44 md:h-52 opacity-95">
           <Image
-            src="/renders/cta_decor.png"
-            alt="3D Ornaments"
-            fill
-            className="object-contain object-center opacity-95"
-            priority
+            src="/assets/8670b841eac7883ecb790f84eb349c6c01db588b.png"
+            alt="3D Spiral"
+            width={220}
+            height={220}
+            className="object-contain"
+          />
+        </div>
+
+        {/* Mid Left: White Squiggle Ribbon */}
+        <div className="absolute left-6 top-80 sm:left-16 sm:top-96 md:left-24 md:top-[420px] w-24 sm:w-32 md:w-36 h-24 sm:h-32 md:h-36 opacity-95">
+          <Image
+            src="/assets/5b3686bc5eadc510e3e04da588f9299d8bd3194c.png"
+            alt="3D Ribbon"
+            width={160}
+            height={160}
+            className="object-contain"
+          />
+        </div>
+
+        {/* Bottom Left: Large White Torus Ring */}
+        <div className="absolute -left-10 bottom-6 sm:left-6 sm:bottom-12 md:left-12 md:bottom-16 w-36 sm:w-48 md:w-56 h-36 sm:h-48 md:h-56 opacity-95">
+          <Image
+            src="/assets/f9c0e0fd05db48405aa72287b20d04b9a01feb51.png"
+            alt="3D Torus"
+            width={240}
+            height={240}
+            className="object-contain"
+          />
+        </div>
+
+        {/* Mid Right: White 3D Cone / Pyramid */}
+        <div className="absolute right-4 top-72 sm:right-16 sm:top-80 md:right-28 md:top-96 w-28 sm:w-36 md:w-44 h-28 sm:h-36 md:h-44 opacity-95">
+          <Image
+            src="/assets/92fc70a39c36138c0e55699b18b3e88bd1f86a59.png"
+            alt="3D Cone"
+            width={180}
+            height={180}
+            className="object-contain"
+          />
+        </div>
+
+        {/* Bottom Right: White Squiggle Ribbon */}
+        <div className="absolute -right-6 bottom-10 sm:right-8 sm:bottom-16 md:right-16 md:bottom-20 w-32 sm:w-40 md:w-48 h-32 sm:h-40 md:h-48 opacity-95">
+          <Image
+            src="/assets/5b3686bc5eadc510e3e04da588f9299d8bd3194c.png"
+            alt="3D Ribbon"
+            width={200}
+            height={200}
+            className="object-contain"
           />
         </div>
       </div>
 
       <div className="relative z-10 max-w-[1360px] mx-auto px-6 lg:px-12 flex flex-col items-center text-center">
-        {/* Main Heading */}
+        {/* Main Heading matching Figma Screenshot 1 */}
         <h1 className="font-heading text-4xl sm:text-5xl md:text-[64px] leading-[1.12] font-bold tracking-tight text-white max-w-4xl mx-auto">
           Get Access to Hundreds <br className="hidden sm:inline" />
           Courses Available
@@ -89,19 +134,14 @@ export default function HeroSection() {
             />
           </div>
 
-          {/* Floating Card 1: UI/UX Design (Left) */}
-          <div className="absolute left-2 sm:left-4 md:-left-8 top-16 sm:top-24 md:top-28 z-20 bg-white text-gray-900 rounded-2xl p-4 sm:p-5 shadow-2xl border border-gray-100 flex items-center gap-3.5 backdrop-blur-md">
-            <div className="w-10 h-10 rounded-xl bg-[#CBFC01]/25 flex items-center justify-center text-black font-bold text-xs">
-              UI
-            </div>
-            <div className="text-left">
-              <h4 className="font-heading font-bold text-sm md:text-base text-gray-900 leading-tight">
-                UI/UX Design
-              </h4>
-              <p className="text-xs text-gray-500 font-medium mt-0.5">
-                200 Courses • 1000+ Students
-              </p>
-            </div>
+          {/* Floating Card 1: UI/UX Design (Left) matching Figma Screenshot 1 without icon */}
+          <div className="absolute left-2 sm:left-4 md:-left-8 top-16 sm:top-24 md:top-28 z-20 bg-white text-gray-900 rounded-2xl px-5 py-4 shadow-2xl border border-gray-100 text-left">
+            <h4 className="font-heading font-bold text-sm sm:text-base text-gray-900 leading-tight">
+              UI/UX Design
+            </h4>
+            <p className="text-xs text-gray-500 font-medium mt-1">
+              200 Courses • 1000+ Students
+            </p>
           </div>
 
           {/* Floating Card 2: Learning Progress (Right) */}
