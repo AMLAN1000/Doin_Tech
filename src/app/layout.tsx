@@ -13,10 +13,10 @@ const nunitoSans = Nunito_Sans({
 });
 
 export const metadata: Metadata = {
-  title: "Long Vacation: Maximum Shiok, Minimum Stress",
-  description: "Your ultimate travel companion for planning the perfect vacation",
+  title: "ByteSpace - Get Access to Hundreds of Courses Available",
+  description: "Unlock your creativity, gain valuable knowledge, and grow your business with our wide range of courses.",
   icons: {
-    icon: "/images/company-logo.png",
+    icon: "/svgs/header_logo.svg",
   },
 };
 
@@ -28,11 +28,20 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
-        <link rel="preconnect" href="https://images.unsplash.com" />
-        <link rel="dns-prefetch" href="https://images.unsplash.com" />
+        <link rel="preconnect" href="https://api.fontshare.com" />
+        <link
+          href="https://api.fontshare.com/v2/css?f[]=clash-display@700,600,500&f[]=satoshi@900,700,500,400&display=swap"
+          rel="stylesheet"
+        />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link
+          href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&display=swap"
+          rel="stylesheet"
+        />
       </head>
       <body
-        className={`${nunitoSans.variable} antialiased bg-white text-slate-900`}
+        className="font-sans antialiased bg-white text-slate-900 selection:bg-[#CBFC01] selection:text-black"
       >
         <ReduxProvider>
           {/* <Navbar /> */}

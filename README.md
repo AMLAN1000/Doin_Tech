@@ -1,36 +1,114 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# ByteSpace — Modern E-Learning Platform
 
-## Getting Started
+A pixel-perfect, responsive implementation of the **ByteSpace** website design based on the official Figma specification. Built with Next.js (App Router), TypeScript, and Tailwind CSS.
 
-First, run the development server:
+---
+
+## 🚀 Live Demo & Repository
+- **Live Vercel URL**: *(Deploying on Vercel)*
+- **GitHub Repository**: [https://github.com/AMLAN1000/Doin_Tech](https://github.com/AMLAN1000/Doin_Tech)
+- **Active Feature Branch**: `amlan`
+- **Pull Request**: [https://github.com/AMLAN1000/Doin_Tech/pull/new/amlan](https://github.com/AMLAN1000/Doin_Tech/pull/new/amlan)
+
+---
+
+## 🛠️ Tech Stack & Architecture
+- **Framework**: Next.js 16 (App Router)
+- **Language**: TypeScript 5
+- **Styling**: Tailwind CSS, CSS Grid/Flexbox
+- **Typography**: Clash Display, Satoshi, Poppins
+- **Icons**: Official Figma Vector SVGs & Lucide React
+- **Component Architecture**: Modular, clean, reusable components
+
+---
+
+## 🌟 Pages & Features Implemented
+
+### 1. Landing Page (`/`)
+- **Navigation Bar**:
+  - ByteSpace logo with vector SVG.
+  - Desktop & mobile responsive drawer navigation (Home, Courses, Creators).
+  - Quick action buttons: *Sign In*, *Join Us*, and shopping cart.
+- **Hero Section**:
+  - Electric Blue branded background with subtle grid overlay.
+  - Floating 3D ornaments (torus, cones, ribbons).
+  - Search input with category filter trigger.
+  - Hero visual: smiling student holding laptop with headset in green circle cutout.
+  - Floating interactive cards: *UI/UX Design* stats, *Learning Progress 55%*, and *Happy Students (4.5 ★ + 2K+)*.
+- **Partners Logo Strip**:
+  - High-fidelity Logoipsum vector partners strip exported from Figma.
+- **Discover Your Passion, Build Your Skills (Courses Section)**:
+  - Category filter pills (*Featured*, *Music*, *Drawing & Painting*, *Marketing*, *Animation*, *UI/UX Design*, *Data Science*, etc.).
+  - 6 course cards matching Figma:
+    1. *Learn Figma from Basic* ($25/lifetime, 4.5 ★)
+    2. *Build Digital Asset* ($25/lifetime, 4.5 ★)
+    3. *the Power of Big Data* ($25/lifetime, 4.5 ★)
+    4. *Balancing Productivity and Self-Care* ($25/lifetime, 4.5 ★)
+    5. *Mastering Money Management* ($25/lifetime, 4.5 ★)
+    6. *From Idea to Startup Success* ($25/lifetime, 4.5 ★)
+    - Includes lessons, duration, comments, beginner level badges, avatar stacks, and pricing.
+- **Explore Diverse Learning Paths (Categories Section)**:
+  - 6 learning categories: *Design*, *Development*, *IT & Software*, *Business*, *Marketing*, *Photography*.
+  - Custom vector icons with lime yellow badges and smooth hover elevation.
+- **Your Path to Professional Growth Starts Here!**:
+  - Career journey overview.
+  - Key counters: **12K Students**, **70+ Courses**, **16 Creators**.
+  - Student learning growth visual card.
+- **Create & Manage Courses Easily**:
+  - Highlighting creator tools, publishing flow, and revenue tracking metrics.
+  - Checklist: *Share Your Expertise*, *Monetize Your Passion*, *Flexibility and Autonomy*, *Build a Community*.
+- **Creator CTA Banner**:
+  - Branded blue banner with 3D ornaments and *Join as Creator* button.
+- **Testimonials Section**:
+  - Reviews from community members (*Sarah M.*, *James L.*, *Alex B.*) with custom avatars and authentic quotes.
+- **Footer**:
+  - Newsletter subscription form with feedback notifications.
+  - 3-column navigation links and copyright/privacy links.
+
+---
+
+### 2. Bonus Pages (Extra Credit)
+
+#### 🔑 Login Page (`/login`)
+- Split-screen design with background grid and floating 3D course card visual.
+- Welcome Back header, email and password inputs.
+- Social authentication buttons (Facebook, Google).
+- Direct switch link to registration page.
+
+#### 📝 Register / Signup Page (`/register`)
+- Split-screen design with background grid and floating 3D course card visual.
+- Full Name, Email, and Password registration inputs.
+- Toast feedback upon account creation and automatic navigation.
+- Direct switch link to login page.
+
+---
+
+## 💻 Getting Started Locally
 
 ```bash
+# Clone the repository
+git clone https://github.com/AMLAN1000/Doin_Tech.git
+
+# Switch to the project directory
+cd Doin_Tech
+
+# Switch to the feature branch
+git checkout amlan
+
+# Install dependencies
+npm install
+
+# Run the development server
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000) in your browser.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+---
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## 📦 Building for Production
 
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+```bash
+npm run build
+npm run start
+```

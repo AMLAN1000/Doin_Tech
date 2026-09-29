@@ -1,216 +1,163 @@
 "use client";
+
+import React, { useState } from "react";
 import Link from "next/link";
-import { z } from "zod";
-import leftimage from "../../../../public/images/company-logo.png";
 import Image from "next/image";
-import logo from "../../../../public/images/logonav.png";
-import { FieldValues, useForm } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { p } from "framer-motion/client";
+import AuthVisual from "@/components/bytespace/AuthVisual";
 import toast from "react-hot-toast";
 import { useRouter } from "next/navigation";
-import { useRegisterMutation } from "@/redux/api/authApi";
-import { useDispatch } from "react-redux";
 
-const registerSchema = z
-  .object({
-    full_name: z.string().nonempty("Name is required"),
-    email: z
-      .string()
-      .trim()
-      .nonempty("Email is required")
-      .email("Invalid email address"),
-    password: z
-      .string()
-      .min(1, "Password is required")
-      .max(10, "Password must be at least 10 characters"),
-    confirm_password: z
-      .string()
-      .min(1, "Password is required")
-      .max(10, "Password must be at least 10 characters"),
-  })
-  .refine((data) => data.password === data.confirm_password, {
-    message: "Passwords don't match",
-    path: ["confirmPassword"],
-  });
-
-export default function SignupPage() {
+export default function RegisterPage() {
+  const [fullName, setFullName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [loading, setLoading] = useState(false);
   const router = useRouter();
-  const {
-    register,
-    handleSubmit,
-    setError,
-    watch,
-    formState: { errors, isSubmitting },
-  } = useForm({
-    resolver: zodResolver(registerSchema),
-    defaultValues: {
-      full_name: "",
-      email: "",
-      password: "",
-      confirm_password: "",
-    },
-  });
 
-  const [registerUser, { isLoading }] = useRegisterMutation();
-
-  const onSubmit = async (data: FieldValues) => {
-    const toastId = toast.loading("Registering...");
-
-    try {
-      const payload = {
-        full_name: data.full_name,
-        email: data.email.trim(),
-        password: data.password,
-        confirm_password: data.confirm_password,
-      };
-      console.log("payload", payload);
-
-      const res = await registerUser(payload).unwrap();
-      console.log("response ", res);
-
-      if (res?.success) {
-        const email = res?.data?.user_data?.email || data.email.trim();
-
-        toast.success(res?.message || "Registered successfully!", {
-          id: toastId,
-        });
-
-        // ✅ OTP verify page
-        router.push(`/otp-verify?email=${encodeURIComponent(email)}`);
-      } else {
-        toast.error(res?.message || "Registration failed!", { id: toastId });
-      }
-    } catch (error: any) {
-      console.log("REGISTER ERROR FULL =>", error);
-
-      const msg =
-        error?.data?.error?.email?.[0] || 
-        error?.response?.data?.error?.email?.[0] ||
-        error?.data?.message ||
-        error?.message ||
-        "Something went wrong . please try again ";
-
-      toast.error(msg, { id: toastId });
+  const handleRegister = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!fullName || !email || !password) {
+      toast.error("Please fill in all fields");
+      return;
     }
+    setLoading(true);
+    setTimeout(() => {
+      setLoading(false);
+      toast.success("Account created successfully! Welcome to ByteSpace.", {
+        style: {
+          background: "#003BE2",
+          color: "#fff",
+        },
+      });
+      router.push("/login");
+    }, 600);
   };
-  return (
-    <div className="min-h-screen w-full grid grid-cols-1 lg:grid-cols-2">
-      {/* Left: Image */}
-      <div className="relative hidden lg:block border-r border-r-amber-50">
-        <Image
-          src={leftimage}
-          alt="Campus"
-          fill
-          className="object-content"
-          priority
-        />
-        {/* optional overlay blur / tint */}
-        <div className="absolute inset-0 bg-black/10" />
-      </div>
 
-      {/* Right: Form */}
-      <div className="flex items-center justify-center px-6 py-12 bg-gray-50">
-        <div className="w-full max-w-md">
-          {/* Logo */}
-          <div className="flex flex-col items-center">
-            {/* চাইলে logo image দাও */}
-            <Link href={"/"} className="w-60 flex items-center justify-center">
-              <Image src={logo} alt="logo" />
-            </Link>
-            <h1 className="mt-4 text-2xl font-semibold text-gray-900">
-              Hey! Welcome
+  return (
+    <div className="min-h-screen w-full bg-[#003BE2] relative flex flex-col justify-between overflow-x-hidden selection:bg-[#CBFC01] selection:text-black">
+      {/* Background Grid Pattern */}
+      <div
+        className="absolute inset-0 opacity-[0.07] pointer-events-none bg-repeat"
+        style={{
+          backgroundImage: `linear-gradient(to right, #ffffff 1px, transparent 1px), linear-gradient(to bottom, #ffffff 1px, transparent 1px)`,
+          backgroundSize: "60px 60px",
+        }}
+      />
+
+      {/* Header Logo */}
+      <header className="relative z-10 w-full max-w-[1360px] mx-auto px-6 lg:px-12 py-8 flex items-center">
+        <Link href="/" className="inline-block">
+          <Image
+            src="/svgs/header_logo.svg"
+            alt="ByteSpace"
+            width={160}
+            height={36}
+            priority
+            className="h-8 md:h-9 w-auto object-contain"
+          />
+        </Link>
+      </header>
+
+      {/* Main Content Area */}
+      <main className="relative z-10 flex-1 w-full max-w-[1360px] mx-auto px-6 lg:px-12 py-6 flex items-center">
+        <div className="w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
+          {/* Left Column: Heading + AuthVisual (6 cols) */}
+          <div className="lg:col-span-6 flex flex-col justify-center text-white">
+            <h1 className="font-heading text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-white leading-[1.18]">
+              Sign up and come in
             </h1>
-            <p className="mt-1 text-sm text-gray-500">Register your account</p>
+            <p className="font-body text-white/80 text-sm sm:text-base mt-4 max-w-lg leading-relaxed">
+              The registration process is straightforward, uncomplicated, and efficient, allowing users to sign up quickly, easily, and at no cost
+            </p>
+
+            <div className="mt-8 hidden sm:flex justify-start">
+              <AuthVisual />
+            </div>
           </div>
 
-          {/* Form */}
-          <form onSubmit={handleSubmit(onSubmit)} className="mt-8 space-y-4">
-            <div>
-              <label className="text-sm text-gray-700">Full Name</label>
-              <input
-                type="text"
-                placeholder="Enter your name"
-                className={`mt-1 w-full rounded-lg border px-4 py-3 text-sm outline-none transition
-                  ${errors.full_name ? "border-red-500" : "border-gray-200 focus:border-orange-500"}
-                `}
-                {...register("full_name")}
-              />
-              {errors.full_name && (
-                <p className="mt-1 text-xs text-red-500">
-                  {" "}
-                  {errors.full_name.message}{" "}
-                </p>
-              )}
+          {/* Right Column: White Card Form (6 cols) */}
+          <div className="lg:col-span-6 flex justify-center lg:justify-end">
+            <div className="w-full max-w-[500px] bg-white rounded-3xl p-8 sm:p-12 shadow-2xl border border-white/20">
+              <span className="text-xs font-semibold text-[#003BE2] uppercase tracking-wider block">
+                Create an Account
+              </span>
+              <h2 className="font-heading text-3xl sm:text-4xl font-bold text-gray-900 mt-1">
+                Welcome to <br />
+                ByteSpace
+              </h2>
+
+              <form onSubmit={handleRegister} className="mt-8 space-y-5">
+                <div>
+                  <label className="block text-xs sm:text-sm font-semibold text-gray-700 mb-2">
+                    Full Name
+                  </label>
+                  <input
+                    type="text"
+                    required
+                    value={fullName}
+                    onChange={(e) => setFullName(e.target.value)}
+                    placeholder="Jamie Davis"
+                    className="w-full rounded-2xl border border-[#E5E6E8] px-4 py-3.5 text-sm text-gray-900 placeholder:text-gray-400 outline-none focus:border-[#003BE2] transition"
+                  />
+                </div>
+
+                <div>
+                  <label className="block text-xs sm:text-sm font-semibold text-gray-700 mb-2">
+                    Email
+                  </label>
+                  <input
+                    type="email"
+                    required
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    placeholder="designer@example.com"
+                    className="w-full rounded-2xl border border-[#E5E6E8] px-4 py-3.5 text-sm text-gray-900 placeholder:text-gray-400 outline-none focus:border-[#003BE2] transition"
+                  />
+                </div>
+
+                <div>
+                  <label className="block text-xs sm:text-sm font-semibold text-gray-700 mb-2">
+                    Password
+                  </label>
+                  <input
+                    type="password"
+                    required
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                    placeholder="********"
+                    className="w-full rounded-2xl border border-[#E5E6E8] px-4 py-3.5 text-sm text-gray-900 placeholder:text-gray-400 outline-none focus:border-[#003BE2] transition"
+                  />
+                </div>
+
+                <div className="flex justify-end pt-2">
+                  <button
+                    type="submit"
+                    disabled={loading}
+                    className="px-8 py-3 bg-[#CBFC01] hover:bg-[#b5e200] text-black font-semibold text-sm rounded-full transition-all duration-200 cursor-pointer shadow-sm hover:shadow disabled:opacity-60"
+                  >
+                    {loading ? "Creating..." : "Continue"}
+                  </button>
+                </div>
+
+                {/* Footer Login Link */}
+                <div className="text-center pt-8">
+                  <p className="text-xs sm:text-sm text-gray-500">
+                    Already have an account?{" "}
+                    <Link
+                      href="/login"
+                      className="text-[#003BE2] font-semibold hover:underline"
+                    >
+                      Login
+                    </Link>
+                  </p>
+                </div>
+              </form>
             </div>
-            <div>
-              <label className="text-sm text-gray-700">Email</label>
-              <input
-                type="email"
-                placeholder="Enter your email"
-                className={`mt-1 w-full rounded-lg border px-4 py-3 text-sm outline-none transition
-                  ${errors.email ? "border-red-500" : "border-gray-200 focus:border-orange-500"}
-                `}
-                {...register("email")}
-              />
-              {errors.email && (
-                <p className="mt-1 text-xs text-red-600">
-                  {errors.email.message}
-                </p>
-              )}
-            </div>
-            <div>
-              <label className="text-sm text-gray-700">Password</label>
-              <input
-                type="password"
-                placeholder="Enter your password"
-                className={`mt-1 w-full rounded-lg border px-4 py-3 text-sm outline-none transition
-                  ${errors.password ? "border-red-500" : "border-gray-200 focus:border-orange-500"}
-                `}
-                {...register("password")}
-              />
-              {errors.password && (
-                <p className="mt-1 text-xs text-red-600">
-                  {errors.password.message}
-                </p>
-              )}
-            </div>
-            <div>
-              <label className="text-sm text-gray-700">Confirm Password</label>
-              <input
-                type="password"
-                placeholder="Confirm Password"
-                className={`mt-1 w-full rounded-lg border px-4 py-3 text-sm outline-none transition
-                  ${errors.password ? "border-red-500" : "border-gray-200 focus:border-orange-500"}
-                `}
-                {...register("confirm_password")}
-              />
-              {errors.confirm_password && (
-                <p className="mt-1 text-xs text-red-600">
-                  {errors.confirm_password.message}
-                </p>
-              )}
-            </div>
-            <button
-              type="submit"
-              disabled={isSubmitting}
-              className="w-full rounded-lg bg-orange-500 hover:bg-orange-600 transition text-white font-semibold py-3 disabled:opacity-60"
-            >
-              {isSubmitting ? "Register..." : "Register"}
-            </button>
-            {/* Footer */}
-            <p className="text-center text-sm text-gray-500 mt-6">
-              Already have an account?{" "}
-              <Link
-                href="/login"
-                className="text-orange-500 font-semibold hover:underline"
-              >
-                Login
-              </Link>
-            </p>
-          </form>
+          </div>
         </div>
-      </div>
+      </main>
+
+      <div className="py-6" />
     </div>
   );
 }
