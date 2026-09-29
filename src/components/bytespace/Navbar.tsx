@@ -9,7 +9,7 @@ export default function ByteSpaceNavbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   return (
-    <header className="w-full absolute top-0 left-0 z-50 transition-all duration-200">
+    <header className="w-full absolute top-0 left-0 z-50">
       <div className="max-w-[1360px] mx-auto px-6 lg:px-12 h-24 flex items-center justify-between">
         {/* Logo */}
         <Link href="/" className="flex items-center gap-2 group">
@@ -27,42 +27,42 @@ export default function ByteSpaceNavbar() {
         <nav className="hidden md:flex items-center gap-10 text-[15px] font-medium text-white/90">
           <Link
             href="/"
-            className="hover:text-white transition-colors duration-150 relative py-1 text-white font-semibold after:content-[''] after:absolute after:bottom-0 after:left-1/2 after:-translate-x-1/2 after:w-4 after:h-[2px] after:bg-[#CBFC01] after:rounded-full"
+            className="text-white font-semibold transition-colors duration-150"
           >
             Home
           </Link>
           <Link
             href="#courses"
-            className="hover:text-white text-white/80 transition-colors duration-150"
+            className="text-white/80 hover:text-white transition-colors duration-150"
           >
             Courses
           </Link>
           <Link
             href="#creators"
-            className="hover:text-white text-white/80 transition-colors duration-150"
+            className="text-white/80 hover:text-white transition-colors duration-150"
           >
             Creators
           </Link>
         </nav>
 
-        {/* Right CTA Actions */}
-        <div className="hidden md:flex items-center gap-6">
+        {/* Right CTA Actions matching Figma Screenshot 1 exactly */}
+        <div className="hidden md:flex items-center gap-8">
           <Link
             href="/login"
-            className="text-[15px] font-medium text-white/90 hover:text-white transition-colors px-2 py-1"
+            className="text-[15px] font-medium text-white/90 hover:text-white transition-colors"
           >
             Sign In
           </Link>
           <Link
             href="/register"
-            className="px-5 py-2.5 rounded-full border border-white/60 hover:border-white text-white text-[14px] font-semibold transition-all duration-200 hover:bg-white hover:text-[#003BE2] shadow-sm"
+            className="text-[15px] font-medium text-white/90 hover:text-white transition-colors"
           >
             Join Us
           </Link>
           <button
             type="button"
             aria-label="Shopping Cart"
-            className="text-white hover:text-[#CBFC01] transition-colors p-2 relative"
+            className="text-white hover:text-[#CBFC01] transition-colors p-1"
           >
             <ShoppingBag className="w-5 h-5 stroke-[1.8]" />
             <span className="sr-only">Cart</span>
